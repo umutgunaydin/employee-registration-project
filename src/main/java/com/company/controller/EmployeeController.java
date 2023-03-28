@@ -24,18 +24,26 @@ public class EmployeeController {
     @GetMapping("/register")
     public String createEmployee(Model model) {
 
-        model.addAttribute("employee",new Employee());
+        model.addAttribute("employee", new Employee());
         model.addAttribute("stateList", DataGenerator.getAllStates());
 
         return "employee/employee-create";
     }
 
     @PostMapping("/insert")
-    public String insertEmployee(@ModelAttribute("employee") Employee employee){
+    public String insertEmployee(@ModelAttribute("employee") Employee employee) {
 
         employeeService.saveEmployee(employee);
 
-        return "employee/employee-list";
+        return "redirect:/employee/list"; // with redirect we are using endpoints
+    }
+
+    @GetMapping("/list")
+    public String listEmployees(Model model) {
+
+        model.addAttribute("employeeList", employeeService.readAllEmployees());
+
+        return "employee/employee-list"; // without redirect we are using html file path
     }
 
 }
