@@ -27,7 +27,7 @@
                             <input type="text" class="form-control" id="inputFirstName4" placeholder="First Name" th:field="*{firstName}">
                             <div class="text-danger" th:if="${#fields.hasErrors('firstName')}">
                                 <ol>
-                                    <li th:each="error : ${#fields.errors()}" th:text="${error}"></li>
+                                    <li th:each="error : ${#fields.errors('firstName')}" th:text="${error}"></li>
                                 </ol>
                             </div>
                         </div>
