@@ -1,5 +1,9 @@
 package com.company.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,6 +16,10 @@ import java.time.LocalDate;
 @ToString
 public class Employee {
 
+   // @NotNull  // -->>  Field should not be null
+   // @NotEmpty // -->>  Field should not be ""    // NotBlank covers others
+    @NotBlank // -->>  Field should not be "      "
+    @Size(max = 12, min = 2)
     private String firstName;
     private String lastName;
 
